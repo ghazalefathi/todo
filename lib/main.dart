@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo/constants/bindings.dart';
-import 'package:todo/screens/main_screens/a.dart';
+
 import 'package:todo/screens/main_screens/home_screen.dart';
 
 main() {
@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-  
         debugShowCheckedModeBanner: false,
         title: 'todo',
         // theme: ThemeData(fontFamily: 'IranSans'),
@@ -22,7 +21,6 @@ class MyApp extends StatelessWidget {
         initialBinding: MyBindings(),
         routes: {
           '/home': (context) => HomeScreen(),
-          '/a': (context) => a(),
         });
   }
 }
