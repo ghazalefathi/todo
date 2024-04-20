@@ -10,7 +10,7 @@ class MyText extends StatelessWidget {
     this.textAlign = TextAlign.center,
     this.textDirection = TextDirection.ltr,
     this.textOverflow,
-    // this.fontWeight = FontWeight.w100,
+    this.fontWeight = FontWeight.w100,
     this.padding,
     this.maxLines,
     this.lineHeight,
@@ -28,7 +28,7 @@ class MyText extends StatelessWidget {
   final TextOverflow? textOverflow;
   final List<Shadow>? shadows;
   final TextDecoration? textDecoration;
-  // final FontWeight? fontWeight;
+  final FontWeight? fontWeight;
   final EdgeInsetsGeometry? padding;
   // final FontType? fontType;
 
@@ -44,6 +44,7 @@ class MyText extends StatelessWidget {
         textDirection: textDirection,
         textAlign: textAlign ?? TextAlign.center,
         style: TextStyle(
+          fontWeight: fontWeight,
             height: lineHeight,
             color: color ?? Theme.of(context).textTheme.titleMedium?.color,
             fontSize: size ?? 14,

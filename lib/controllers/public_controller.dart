@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,5 +11,11 @@ class PublicController extends GetxController {
     } else {
       scaffoldState.currentState?.closeDrawer();
     }
+  }
+
+  void runSplash() {
+    Timer(Duration(seconds: 3), () {
+      Get.toNamed('/home');
+    });
   }
 }
