@@ -15,7 +15,7 @@ class PublicController extends GetxController {
 
   void runSplash() {
     Timer(Duration(seconds: 3), () {
-      Get.toNamed('/home');
+      Get.toNamed('/log-in');
     });
   }
 }
