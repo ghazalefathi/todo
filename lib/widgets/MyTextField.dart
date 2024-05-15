@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../constants/colors.dart';
 
 class MyTextField extends StatelessWidget {
   const MyTextField({
@@ -22,18 +23,19 @@ class MyTextField extends StatelessWidget {
     this.height,
     this.prefixIcon,
     this.hasBorder = false,
-    this.textStyle,
+    this.txtColor,
     this.suffixIcon,
     this.cursorColor,
     this.onActionClicked,
     this.fillColor,
-    this.textColor,
     this.strokeColor,
     this.fontSize,
     this.paddingTop,
     this.paddingBottom,
     this.paddingLeft,
     this.paddingRight,
+    this.autofocus,
+    this.suggest,
     super.key,
   });
   final String hint;
@@ -49,7 +51,7 @@ class MyTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? inputType;
   final int? maxLength;
-  final TextStyle? textStyle;
+  final Color? txtColor;
   final TextAlign? textAlign;
   final TextInputAction? action;
   final Function(String text)? onchangedAction;
@@ -60,11 +62,12 @@ class MyTextField extends StatelessWidget {
   final bool? isPassword;
   final bool? isEnabled;
   final bool? hasBorder;
+  final bool? autofocus;
+  final bool? suggest;
   final Color? hintColor;
   final Color? cursorColor;
   final Color? strokeColor;
   final Color? fillColor;
-  final Color? textColor;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
 
@@ -72,20 +75,26 @@ class MyTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: height,
+      height: height ?? 55,
       child: TextField(
-        style: textStyle,
+        enableSuggestions: suggest ?? false,
+        autocorrect: suggest ?? false,
+        autofocus: autofocus ?? false,
         enabled: isEnabled,
-        obscureText: isPassword == true ? true : false,
+        obscureText: isPassword == true,
         focusNode: focusNode,
         textInputAction: action,
         maxLines: maxLines,
+        style: TextStyle(
+          color: txtColor ?? cW,
+        ),
+        textDirection: textDirection ?? textDirection,
         keyboardType: inputType,
         onSubmitted: onActionClicked,
         controller: controller,
         onChanged: onchangedAction,
-        cursorColor: cursorColor,
-        textAlign: textAlign ?? TextAlign.left,
+        cursorColor: cursorColor ?? cW,
+        textAlign: textAlign ?? TextAlign.right,
         inputFormatters: addlist(maxLength, inputType),
         decoration: InputDecoration(
           fillColor: fillColor,
@@ -101,10 +110,10 @@ class MyTextField extends StatelessWidget {
           ),
           hintText: hint,
           hintStyle: TextStyle(
-            height: 1,
-            color: hintColor,
-            fontSize: hintFontSize ?? 15,
-          ),
+              height: 1,
+              color: hintColor,
+              fontSize: hintFontSize ?? 15,
+              fontFamily: 'IranSans'),
           enabledBorder: hasBorder == false
               ? OutlineInputBorder(
                   borderRadius: BorderRadius.circular(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class MyTextButton extends StatelessWidget {
   const MyTextButton({
     this.width,
+    this.margin,
     this.height,
     this.onTap,
     this.bgColor,
@@ -12,7 +13,6 @@ class MyTextButton extends StatelessWidget {
     this.borderRadius,
     this.padding,
     this.boxShadow,
-   
     required this.child,
     super.key,
   });
@@ -21,29 +21,30 @@ class MyTextButton extends StatelessWidget {
   final Widget child;
   final Color? bgColor;
   final Color? borderColor;
-  final double? borderRadius;
+  final BorderRadius? borderRadius;
   final double? width;
   final double? height;
   final double? borderWidth;
   final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
   final BoxShadow? boxShadow;
- 
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin:  margin,
       decoration: BoxDecoration(
-         
           color: bgColor,
           boxShadow: boxShadow == null ? [] : [boxShadow!],
-          borderRadius: BorderRadius.circular(borderRadius ?? 5),
+          borderRadius:borderRadius ?? BorderRadius.circular(5) ,
           border: Border.all(
               width: borderWidth ?? 0,
               color: borderColor ?? Colors.transparent)),
       width: width,
       height: height,
       child: CupertinoButton(
-          borderRadius: BorderRadius.circular(borderRadius ?? 5),
+          borderRadius: borderRadius ?? BorderRadius.circular(5) ,
           padding: padding,
           onPressed: onTap,
           child: child),

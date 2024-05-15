@@ -7,6 +7,7 @@ Color cBlueLight = Color(0xFF778DA9);
 Color cBgBlack = Color(0xFF1B1919);
 Color cB = Color(0xFF2B2B2B);
 Color cBlueDark = Color(0xFF132E4E);
+Color cPink = Color(0xFFc1121f);
 
 // final BoxShadow bs =
 //     BoxShadow(blurRadius: 15, color: cB.withOpacity(.05), offset: Offset(0, 5));
