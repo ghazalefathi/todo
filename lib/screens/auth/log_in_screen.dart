@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:todo/widgets/MyTextButton.dart';
+import 'package:todo/screens/main_screens/home_screen.dart';
+
 import 'package:todo/widgets/MyTextField.dart';
+
 import 'package:todo/widgets/my_text_widget.dart';
 import '../../constants/colors.dart';
 import 'package:get/get.dart';
+
+import '../../widgets/MyTextButton.dart';
+import 'forgot_passwor_screen.dart';
 
 class LogInScreem extends StatelessWidget {
   const LogInScreem({super.key});
@@ -47,7 +52,7 @@ class LogInScreem extends StatelessWidget {
                     borderRadius: 2,
                     fillColor: cW,
                     prefixIcon: Container(
-                      child: Icon(Icons.person),
+                      child: Icon(Icons.person,color: cB.withOpacity(.5)),
                     ),
                     textAlign: TextAlign.left,
                     hint: 'Email ID',
@@ -61,7 +66,7 @@ class LogInScreem extends StatelessWidget {
                       hintColor: cB.withOpacity(.5),
                       borderRadius: 2,
                       prefixIcon: Container(
-                        child: Icon(Icons.lock),
+                        child: Icon(Icons.lock,color: cB.withOpacity(.5)),
                       ),
                       fillColor: cW,
                       textAlign: TextAlign.left,
@@ -73,7 +78,9 @@ class LogInScreem extends StatelessWidget {
                     children: [
                       Expanded(
                         child: MyTextButton(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(ForgotPasswordScreen());
+                          },
                           child: Align(
                             alignment: Alignment.topRight,
                             child: MyText(
@@ -94,6 +101,9 @@ class LogInScreem extends StatelessWidget {
             ),
           ),
           MyTextButton(
+              onTap: () {
+                Get.to(HomeScreen());
+              },
               height: 50,
               width: Get.width,
               borderRadius: BorderRadius.only(
@@ -106,6 +116,30 @@ class LogInScreem extends StatelessWidget {
                 color: cPink,
                 fontWeight: FontWeight.bold,
               )),
+          SizedBox(
+            height: 15,
+          ),
+          MyText(
+            text: '- OR Continue with -',
+            color: cW,
+            fontWeight: FontWeight.bold,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              MyTextButton(
+                padding: EdgeInsets.zero,
+                onTap: () {},
+                child: Image.asset(
+                  'assets/images/google.png',
+                  width: 40,
+                  height: 40,
+                ),
+              ),
+            ],
+          ),
           MyTextButton(
               onTap: () {},
               child: MyText(

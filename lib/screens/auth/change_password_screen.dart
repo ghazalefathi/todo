@@ -5,8 +5,8 @@ import 'package:todo/widgets/my_text_widget.dart';
 import 'package:get/get.dart';
 import '../../widgets/MyTextField.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class ChangePasswordScreen extends StatelessWidget {
+  const ChangePasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             child: MyText(
               textAlign: TextAlign.left,
               padding: EdgeInsets.only(left: 20),
-              text: 'Create an\n account ',
+              text: 'Change\n Password ',
               color: cW,
               fontWeight: FontWeight.bold,
               size: 20,
@@ -97,6 +97,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             ),
           ),
           MyTextButton(
+              onTap: () {},
               margin: EdgeInsets.symmetric(horizontal: 20),
               height: 50,
               borderRadius: BorderRadius.only(
@@ -109,33 +110,6 @@ class ForgotPasswordScreen extends StatelessWidget {
                 color: cPink,
                 fontWeight: FontWeight.bold,
               )),
-          SizedBox(
-            height: 15,
-          ),
-          MyText(
-            text: '- OR Continue with -',
-            color: cW,
-            fontWeight: FontWeight.bold,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          MyTextButton(
-            padding: EdgeInsets.zero,
-            onTap: () {},
-            child: Image.asset(
-              'assets/images/google.png',
-              width: 40,
-              height: 40,
-            ),
-          ),
-          MyTextButton(
-              onTap: () {},
-              child: MyText(
-                text: 'I Already Have an Account Login',
-                color: cW,
-                fontWeight: FontWeight.bold,
-              ))
         ],
       ),
     ));
