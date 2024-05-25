@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo/screens/main_screens/home_screen.dart';
+import 'package:todo/screens/main_screens/one_screen.dart';
 
 import 'package:todo/widgets/MyTextField.dart';
 
@@ -52,7 +52,7 @@ class LogInScreem extends StatelessWidget {
                     borderRadius: 2,
                     fillColor: cW,
                     prefixIcon: Container(
-                      child: Icon(Icons.person,color: cB.withOpacity(.5)),
+                      child: Icon(Icons.person, color: cB.withOpacity(.5)),
                     ),
                     textAlign: TextAlign.left,
                     hint: 'Email ID',
@@ -66,7 +66,7 @@ class LogInScreem extends StatelessWidget {
                       hintColor: cB.withOpacity(.5),
                       borderRadius: 2,
                       prefixIcon: Container(
-                        child: Icon(Icons.lock,color: cB.withOpacity(.5)),
+                        child: Icon(Icons.lock, color: cB.withOpacity(.5)),
                       ),
                       fillColor: cW,
                       textAlign: TextAlign.left,
@@ -102,7 +102,7 @@ class LogInScreem extends StatelessWidget {
           ),
           MyTextButton(
               onTap: () {
-                Get.to(HomeScreen());
+                Get.to(oneScreen());
               },
               height: 50,
               width: Get.width,
@@ -127,18 +127,14 @@ class LogInScreem extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Row(
-            children: [
-              MyTextButton(
-                padding: EdgeInsets.zero,
-                onTap: () {},
-                child: Image.asset(
-                  'assets/images/google.png',
-                  width: 40,
-                  height: 40,
-                ),
-              ),
-            ],
+          MyTextButton(
+            padding: EdgeInsets.zero,
+            onTap: () {},
+            child: Image.asset(
+              'assets/images/google.png',
+              width: 40,
+              height: 40,
+            ),
           ),
           MyTextButton(
               onTap: () {},

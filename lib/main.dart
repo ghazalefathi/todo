@@ -3,10 +3,7 @@ import 'package:get/get.dart';
 import 'package:todo/constants/bindings.dart';
 import 'package:todo/screens/auth/change_password_screen.dart';
 import 'package:todo/screens/auth/log_in_screen.dart';
-
-import 'package:todo/screens/main_screens/home_screen.dart';
-import 'package:todo/screens/splash_screen.dart';
-
+import 'package:todo/screens/main_screens/one_screen.dart';
 import 'screens/auth/forgot_passwor_screen.dart';
 
 main() {
@@ -22,13 +19,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'todo',
         // theme: ThemeData(fontFamily: 'IranSans'),
-        initialRoute: '/log-in',
+        initialRoute: '/one',
         initialBinding: MyBindings(),
         routes: {
-          '/spash': (context) => SplashScreen(),
+          // '/': (context) => SplashScreen(),
           '/log-in': (context) => LogInScreem(),
-        
-          '/home': (context) => HomeScreen(),
+           '/one': (context) => oneScreen(),
           '/forgot-assword': (context) => ForgotPasswordScreen(),
           '/change-password': (context) => ChangePasswordScreen(),
         });

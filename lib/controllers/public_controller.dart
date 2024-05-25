@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo/constants/model.dart';
@@ -17,11 +15,11 @@ class PublicController extends GetxController {
     }
   }
 
-  void runSplash() {
-    Timer(Duration(seconds: 3), () {
-      Get.toNamed('/log-in');
-    });
-  }
+  // void runSplash() {
+  //   Timer(Duration(seconds: 3), () {
+  //     Get.toNamed('/log-in');
+  //   });
+  // }
 
   void getFullName() {
     print('yes');
