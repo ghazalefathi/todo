@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/strings.dart';
 import 'package:todo/widgets/MyTextButton.dart';
@@ -13,67 +14,133 @@ class oneScreen extends StatefulWidget {
 
 class _oneScreenState extends State<oneScreen> {
   bool isExpanded = false;
-  bool isBigImage = false;
+  bool a = false;
+  int counter = 0;
+  double rotate = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: AnimatedContainer(
-          duration: Duration(seconds: 1),
-          height: isExpanded ? 150 : 60,
-          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          decoration:
-              BoxDecoration(border: Border.all(color: cB.withOpacity(.2))),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
+        body: Column(
+          children: [
+            AnimatedContainer(
+              duration: Duration(seconds: 1),
+              height: isExpanded ? 150 : 60,
+              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              decoration:
+                  BoxDecoration(border: Border.all(color: cB.withOpacity(.2))),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green),
-                          shape: BoxShape.circle),
-                      child: ClipOval(
-                        child: Image.asset(
-                          'assets/images/user.jpg',
-                          fit: BoxFit.cover,
+                    Row(
+                      children: [
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.green),
+                              shape: BoxShape.circle),
+                          child: ClipOval(
+                            child: Image.asset(
+                              'assets/images/user.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                      ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        MyText(
+                          text: 'Ghazale Fathi',
+                          fontWeight: FontWeight.bold,
+                        ),
+                        Spacer(),
+                        MyTextButton(
+                            padding: EdgeInsets.zero,
+                            onTap: () {
+                              setState(() {
+                                isExpanded = !isExpanded;
+                              });
+                            },
+                            child: Icon(
+                              isExpanded
+                                  ? Icons.arrow_drop_up
+                                  : Icons.arrow_drop_down,
+                              size: 35,
+                              color: cB,
+                            ))
+                      ],
                     ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    MyText(
-                      text: 'Ghazale Fathi',
-                      fontWeight: FontWeight.bold,
-                    ),
-                    Spacer(),
-                    MyTextButton(
-                        padding: EdgeInsets.zero,
-                        onTap: () {
-                          setState(() {
-                            isExpanded = !isExpanded;
-                          });
-                        },
-                        child: Icon(
-                          isExpanded
-                              ? Icons.arrow_drop_up
-                              : Icons.arrow_drop_down,
-                          size: 35,
-                          color: cB,
-                        ))
+                    isExpanded
+                        ? MyText(textAlign: TextAlign.left, text: '$lorem')
+                        : SizedBox(),
                   ],
                 ),
-                isExpanded
-                    ? MyText(textAlign: TextAlign.left, text: '$lorem')
-                    : SizedBox(),
-              ],
+              ),
             ),
-          ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+              decoration: BoxDecoration(
+                  border: Border.all(color: cBlueDark),
+                  borderRadius: BorderRadius.circular(5)),
+              height: 200,
+              child: AnimatedAlign(
+                alignment: a ? Alignment.topRight : Alignment.bottomLeft,
+                duration: Duration(seconds: 1),
+                child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        a = !a;
+                      });
+                    },
+                    child: FlutterLogo(
+                      size: 40,
+                    )),
+              ),
+            ),
+            Center(
+                child: AnimatedSwitcher(
+              duration: Duration(milliseconds: 200),
+              transitionBuilder: (child, animation) {
+                return ScaleTransition(
+                  scale: animation,
+                  child: child,
+                );
+              },
+              child: MyText(
+                key: UniqueKey(),
+                text: '$counter',
+                fontWeight: FontWeight.bold,
+                size: 60,
+              ),
+            )),
+            MyTextButton(
+                onTap: () {
+                  setState(() {
+                    counter++;
+                  });
+                },
+                child: Icon(
+                  Icons.add,
+                  color: cB,
+                )),
+            AnimatedRotation(
+              turns: rotate,
+              duration: Duration(seconds: 1),
+              child: MyTextButton(
+                onTap: () {
+                  setState(() {
+                    rotate++;
+                  });
+                },
+                child: FlutterLogo(
+                  size: 150,
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
